@@ -19,7 +19,7 @@ RUN mvn package
 FROM eclipse-temurin:20-jre-alpine
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /usr/src/myapp/target/app.jar .
+COPY --from=builder /target/app.jar .
 
 EXPOSE 8123
 ENTRYPOINT ["java", "-jar", "./app.jar"]
